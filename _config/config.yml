@@ -1,0 +1,29 @@
+---
+Name: division-config
+After:
+    - '*'
+---
+SilverStripe\Security\Member:
+  log_num_visits: false
+  log_last_visited: false
+SSViewer:
+  theme: 'division-subtheme'
+GDBackend:
+  default_quality: 90
+SilverStripe\Core\Manifest\ModuleManifest:
+  module_priority:
+    - md/division-project
+    - silverstripe/cms
+    - dnadesign/silverstripe-elemental
+    - silverstripe/blog
+SilverStripe\Assets\File:
+  create_table_options:
+    MySQLDatabase: 'ENGINE=MyISAM'
+SilverStripe\CMS\Model\SiteTree:
+  create_table_options:
+    MySQLDatabase: 'ENGINE=MyISAM'
+SilverStripe\Assets\Flysystem\AssetAdapter:
+  file_permissions:
+    'file':
+      'public': '0644'
+      'private': '0600'

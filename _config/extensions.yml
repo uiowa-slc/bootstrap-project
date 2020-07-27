@@ -1,0 +1,11 @@
+---
+Name: division-extensions
+After:
+    - '*'
+---
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - SiteConfigExtension
+SilverStripe\UserForms\Model\Recipient\EmailRecipient:
+  extensions:
+    - DivisionEmailRecipientExtension
