@@ -1,3 +1,5 @@
+<% include Header %>
+
 <% if $Menu(2) || $SideBarView.Widgets %>
 	<% include SideBar %>
 <% end_if %>

@@ -9,6 +9,7 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import yaml     from 'js-yaml';
+import fs       from 'fs';
 
 // import {output as pagespeed} from 'psi';
 import pkg from './package.json';
@@ -47,14 +48,13 @@ function images(){
 function copy(){
 
   return gulp.src([
-       PATHS.theme + '/src/*',
-       PATHS.theme + '/src/**/*',
-       '!' + PATHS.theme + '/src/styles/**/*',
-       '!' + PATHS.theme + '/src/scripts/**/*',
-       '!' + PATHS.theme + '/src/templates',
-       '!' + PATHS.theme + '/src/templates/**/*',
-       '!' + PATHS.theme + '/*.html',
-     ],{dot: true})
+    PATHS.theme + '/src/*',
+    PATHS.theme + '/src/**/*',
+    '!' + PATHS.theme + '/src/styles',
+    '!' + PATHS.theme + '/src/styles/**/*',
+    '!' + PATHS.theme + '/src/scripts',
+    '!' + PATHS.theme + '/src/scripts/**/*',
+    ],{dot: true})
     .pipe(gulp.dest(PATHS.theme + '/dist/'))
     .pipe($.size({title: 'copy'}));
 }
@@ -91,7 +91,7 @@ function styles(){
     .pipe($.sass({
       precision: 10,
       includePaths: [
-        '../vendor/md/uiowa-bar/scss',
+        '../uiowa-bar/scss',
         './node_modules/'
       ]
     }).on('error', $.sass.logError))
@@ -107,9 +107,9 @@ function styles(){
 // to enable ES2015 support remove the line `"only": "gulpfile.babel.js",` in the
 // `.babelrc` file.
 function scripts(){
-    return gulp.src([
+    return gulp.src(
       PATHS.javascript
-      /*  
+      /*
       // Note: Since we are not using useref in the scripts build pipeline,
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
@@ -123,7 +123,7 @@ function scripts(){
       // './node_modules/magnific-popup/dist/jquery.magnific-popup.js',
       PATHS.theme + '/src/scripts/app.js',*/
 
-    ])
+    )
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
       .pipe($.babel())
@@ -141,7 +141,7 @@ function scripts(){
 
 // Clean output directory
 function clean(){
-  return del(['.tmp', PATHS.theme + '/dist/*', '!dist/.git'], {dot: true})
+  return del(['.tmp', PATHS.theme + '/dist/*', '!' + PATHS.theme + 'dist/.git'], {dot: true, force: true})
 }
 
 function watch(){

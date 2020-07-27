@@ -5,3 +5,4 @@ dist
 *.scssc
 .python-version
 .phpintel
+.tmp

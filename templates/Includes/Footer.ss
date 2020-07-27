@@ -9,10 +9,10 @@
                     <img class="lazyload" data-src="$SiteConfig.FooterLogo.URL" alt="$SiteConfig.Title Logo">
                 </div>
             <% else_if $SiteConfig.DisableDivisionBranding %>
-                <a href="http://uiowa.edu" class="footer__logo"><img class="lazyload" data-src="{$ThemeDir}/dist/images/ui-logo-footer.png" alt="The University of Iowa"></a>
+                <a href="http://uiowa.edu" class="footer__logo"><img class="lazyload" data-src="$resourceURL('vendor/md/bootstrap-project/client/images/ui-logo-footer.png)" alt="The University of Iowa"></a>
             <% else %>
                 <a href="http://studentlife.uiowa.edu" class="footer__logo"><img class="lazyload"
-         data-src="{$ThemeDir}/dist/images/dosl-uiowa.png" alt="Division Of Student Life"></a>
+         data-src="$resourceURL('vendor/md/bootstrap-project/client/images/dosl-uiowa.png)" alt="Division Of Student Life"></a>
             <% end_if %>
             <% if $SiteConfig.GroupSummary %>
                 <div class="footer__summary">$SiteConfig.GroupSummary</div>

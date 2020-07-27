@@ -6,7 +6,7 @@
    "require":{
       "php": ">=5.5",
       "silverstripe/recipe-plugin": "^1.2",
-      "silverstripe/recipe-cms": "4.5.*@stable",
+      "silverstripe/recipe-cms": "4.6.*@stable",
       "md/ac-json-events": "dev-ss4.x-ui",
       "md/saml": "dev-md",
       "md/division-analytics": "1.*",
@@ -48,11 +48,7 @@
    ],
    "extra": {
         "expose": [
-          "client",
-          "src/favicons-block",
-          "src/images",
-          "cms-icons",
-          "css"
+          "client"
         ]
     }
 }
