@@ -91,6 +91,7 @@ function styles(){
     .pipe($.sass({
       precision: 10,
       includePaths: [
+        './client/scss/',
         '../uiowa-bar/scss',
         './node_modules/'
       ]
