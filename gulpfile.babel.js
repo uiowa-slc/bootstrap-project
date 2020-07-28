@@ -25,7 +25,7 @@ function loadConfig() {
 
 // Lint JavaScript
 function lint(){
-  return gulp.src(PATHS.theme + '/scripts/**/*.js')
+  return gulp.src('../../../themes/' + PATHS.theme + '/scripts/**/*.js')
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failOnError()));
@@ -34,28 +34,26 @@ function lint(){
 
 // Optimize images
 function images(){
-  return gulp.src(PATHS.theme + '/src/images/**/*')
+  return gulp.src('../../../themes/' + PATHS.theme + '/src/images/**/*')
     .pipe($.imagemin({
       progressive: true,
       interlaced: true
     }))
-    .pipe(gulp.dest(PATHS.theme + '/dist/images'))
-    .pipe($.size({title: PATHS.theme + '/dist/images'}));
+    .pipe(gulp.dest('../../../themes/' + PATHS.theme + '/dist/images'))
+    .pipe($.size({title: '../../../themes/' + PATHS.theme + '/dist/images'}));
 }
 
 
 // Copy all files at the root level (app)
 function copy(){
-
   return gulp.src([
-    PATHS.theme + '/src/*',
-    PATHS.theme + '/src/**/*',
-    '!' + PATHS.theme + '/src/styles',
-    '!' + PATHS.theme + '/src/styles/**/*',
-    '!' + PATHS.theme + '/src/scripts',
-    '!' + PATHS.theme + '/src/scripts/**/*',
+    '../../../themes/' + PATHS.theme + '/src/**/*',
+    '!' + '../../../themes/' + PATHS.theme + '/src/{images,scripts,styles}/**',
+    '!' + '../../../themes/' + PATHS.theme + '/src/{images,scripts,styles}',
+    '!src/{images,scripts,styles}',
+    '!src/{images,scripts,styles}/**',
     ],{dot: true})
-    .pipe(gulp.dest(PATHS.theme + '/dist/'))
+    .pipe(gulp.dest('../../../themes/' + PATHS.theme + '/dist/'))
     .pipe($.size({title: 'copy'}));
 }
 
@@ -84,7 +82,7 @@ function styles(){
 
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-    PATHS.theme + '/src/styles/main.scss',
+    '../../../themes/' + PATHS.theme + '/src/styles/main.scss',
   ])
     .pipe($.newer('.tmp/styles'))
     .pipe($.sourcemaps.init())
@@ -101,7 +99,7 @@ function styles(){
     .pipe($.if('*.css', $.postcss(plugins)))
     .pipe($.size({title: 'styles'}))
     .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest(PATHS.theme + '/dist/styles'));
+    .pipe(gulp.dest('../../../themes/' + PATHS.theme + '/dist/styles'));
 };
 
 // Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
@@ -122,7 +120,7 @@ function scripts(){
       './node_modules/lazysizes/lazysizes.js',
       // './node_modules/flickity/dist/flickity.pkgd.js',
       // './node_modules/magnific-popup/dist/jquery.magnific-popup.js',
-      PATHS.theme + '/src/scripts/app.js',*/
+      '../../../themes/' + PATHS.theme + '/src/scripts/app.js',*/
 
     )
       .pipe($.newer('.tmp/scripts'))
@@ -135,21 +133,21 @@ function scripts(){
       // Output files
       .pipe($.size({title: 'scripts'}))
       .pipe($.sourcemaps.write('.'))
-      .pipe(gulp.dest(PATHS.theme + '/dist/scripts'));
+      .pipe(gulp.dest('../../../themes/' + PATHS.theme + '/dist/scripts'));
 };
 
 
 
 // Clean output directory
 function clean(){
-  return del(['.tmp', PATHS.theme + '/dist/*', '!' + PATHS.theme + 'dist/.git'], {dot: true, force: true})
+  return del(['.tmp', '../../../themes/' + PATHS.theme + '/dist/*', '!' + '../../../themes/' + PATHS.theme + 'dist/.git'], {dot: true, force: true})
 }
 
 function watch(){
-
-  gulp.watch([PATHS.theme + '/src/styles/**/*.{scss,css}'], gulp.series(styles));
-  gulp.watch([PATHS.theme + '/src/scripts/**/*.js'], gulp.series(lint, scripts));
-  gulp.watch([PATHS.theme + '/src/images/**/*'], gulp.series(images));
+  gulp.watch(['./client/styles/**/*.{scss,css}'], gulp.series(styles));
+  gulp.watch(['../../../themes/' + PATHS.theme + '/src/styles/**/*.{scss,css}'], gulp.series(styles));
+  gulp.watch(['../../../themes/' + PATHS.theme + '/src/scripts/**/*.js'], gulp.series(lint, scripts));
+  gulp.watch(['../../../themes/' + PATHS.theme + '/src/images/**/*'], gulp.series(images));
 }
 
 // });
