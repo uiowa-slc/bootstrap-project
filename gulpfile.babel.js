@@ -15,8 +15,8 @@ import fs       from 'fs';
 import pkg from './package.json';
 
 const $ = gulpLoadPlugins();
-const reload = browserSync.reload;
 const { PATHS } = loadConfig();
+const themeDir = '../../../themes/' + PATHS.theme;
 
 function loadConfig() {
   let ymlFile = fs.readFileSync('../../../gulp.yml', 'utf8');
@@ -25,7 +25,7 @@ function loadConfig() {
 
 // Lint JavaScript
 function lint(){
-  return gulp.src('../../../themes/' + PATHS.theme + '/scripts/**/*.js')
+  return gulp.src(themeDir + '/scripts/**/*.js')
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failOnError()));
@@ -34,32 +34,31 @@ function lint(){
 
 // Optimize images
 function images(){
-  return gulp.src('../../../themes/' + PATHS.theme + '/src/images/**/*')
+  return gulp.src(themeDir + '/src/images/**/*')
     .pipe($.imagemin({
       progressive: true,
       interlaced: true
     }))
-    .pipe(gulp.dest('../../../themes/' + PATHS.theme + '/dist/images'))
-    .pipe($.size({title: '../../../themes/' + PATHS.theme + '/dist/images'}));
+    .pipe(gulp.dest(themeDir + '/dist/images'))
+    .pipe($.size({title: themeDir + '/dist/images'}));
 }
 
 
 // Copy all files at the root level (app)
 function copy(){
   return gulp.src([
-    '../../../themes/' + PATHS.theme + '/src/**/*',
-    '!' + '../../../themes/' + PATHS.theme + '/src/{images,scripts,styles}/**',
-    '!' + '../../../themes/' + PATHS.theme + '/src/{images,scripts,styles}',
+    themeDir + '/src/**/*',
+    '!' + themeDir + '/src/{images,scripts,styles}/**',
+    '!' + themeDir + '/src/{images,scripts,styles}',
     '!src/{images,scripts,styles}',
     '!src/{images,scripts,styles}/**',
     ],{dot: true})
-    .pipe(gulp.dest('../../../themes/' + PATHS.theme + '/dist/'))
+    .pipe(gulp.dest(themeDir + '/dist/'))
     .pipe($.size({title: 'copy'}));
 }
 
 // Compile and automatically prefix stylesheets
 function styles(){
-
     const AUTOPREFIXER_BROWSERS = [
       'ie >= 10',
       'ie_mob >= 10',
@@ -82,7 +81,7 @@ function styles(){
 
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-    '../../../themes/' + PATHS.theme + '/src/styles/main.scss',
+    themeDir + '/src/styles/main.scss',
   ])
     .pipe($.newer('.tmp/styles'))
     .pipe($.sourcemaps.init())
@@ -99,7 +98,7 @@ function styles(){
     .pipe($.if('*.css', $.postcss(plugins)))
     .pipe($.size({title: 'styles'}))
     .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('../../../themes/' + PATHS.theme + '/dist/styles'));
+    .pipe(gulp.dest(themeDir + '/dist/styles'));
 };
 
 // Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
@@ -108,20 +107,6 @@ function styles(){
 function scripts(){
     return gulp.src(
       PATHS.javascript
-      /*
-      // Note: Since we are not using useref in the scripts build pipeline,
-      //       you need to explicitly list your scripts here in the right order
-      //       to be correctly concatenated
-      './node_modules/jquery/dist/jquery.js',
-      // './node_modules/popper.js/dist/umd/popper.min.js',
-      // './node_modules/tether/dist/js/tether.min.js',
-      // './node_modules/bootstrap/dist/js/bootstrap.min.js',
-      // './node_modules/@fortawesome/fontawesome-free/js/regular.js',
-      './node_modules/lazysizes/lazysizes.js',
-      // './node_modules/flickity/dist/flickity.pkgd.js',
-      // './node_modules/magnific-popup/dist/jquery.magnific-popup.js',
-      '../../../themes/' + PATHS.theme + '/src/scripts/app.js',*/
-
     )
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
@@ -133,25 +118,38 @@ function scripts(){
       // Output files
       .pipe($.size({title: 'scripts'}))
       .pipe($.sourcemaps.write('.'))
-      .pipe(gulp.dest('../../../themes/' + PATHS.theme + '/dist/scripts'));
+      .pipe(gulp.dest(themeDir + '/dist/scripts'));
 };
 
 
 
 // Clean output directory
 function clean(){
-  return del(['.tmp', '../../../themes/' + PATHS.theme + '/dist/*', '!' + '../../../themes/' + PATHS.theme + 'dist/.git'], {dot: true, force: true})
+  return del(['.tmp', themeDir + '/dist/*', '!' + themeDir + 'dist/.git'], {dot: true, force: true})
 }
 
 function watch(){
-  gulp.watch(['./client/styles/**/*.{scss,css}'], gulp.series(styles));
-  gulp.watch(['../../../themes/' + PATHS.theme + '/src/styles/**/*.{scss,css}'], gulp.series(styles));
-  gulp.watch(['../../../themes/' + PATHS.theme + '/src/scripts/**/*.js'], gulp.series(lint, scripts));
-  gulp.watch(['../../../themes/' + PATHS.theme + '/src/images/**/*'], gulp.series(images));
+  gulp.watch(['./client/styles/**/*.{scss,css}'], gulp.series(styles, reload));
+  gulp.watch([themeDir + '/src/styles/**/*.{scss,css}'], gulp.series(styles, reload));
+  gulp.watch([themeDir + '/src/scripts/**/*.js'], gulp.series(lint, scripts, reload));
+  gulp.watch([themeDir + '/src/images/**/*'], gulp.series(images, reload));
+}
+
+function liveReloadInit(done){
+    browserSync.init({
+        proxy: "http://localhost:8888/" + PATHS.projectName
+
+    });
+    done();
+}
+
+function reload(done) {
+  browserSync.reload();
+  done();
 }
 
 // });
 
 // Build production files, the default task
 gulp.task('default', gulp.series(clean, copy, gulp.parallel(styles,
-    lint, scripts, images,), watch));
+    lint, scripts, images), liveReloadInit, watch));
