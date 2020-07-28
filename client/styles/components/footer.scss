@@ -1,0 +1,44 @@
+/*-------------------------------------------
+    Media Queries
+-------------------------------------------*/
+.footer {
+    font-size: $font-size-sm;
+    &__logo {
+        display:block;
+        max-width: 300px;
+    }
+    &__heading {
+        font-size: $font-size-base;
+    }
+    &__buttons .btn {
+        font-size: $font-size-base * .8;
+    }
+    &__socialmedia {
+        & .fab {
+            color: $highlight;
+        }
+        & li a {
+            color: $gray-100;
+            display: block;
+            &:hover, &:focus {
+                color: #fff;
+                & .fab {
+                    color: $gray-100;
+                }
+            }
+        }
+    }
+    &__md {
+        max-width: 36px;
+    }
+    &__address a {
+        text-decoration: underline;
+    }
+    &__disclaimer a {
+        color: $gray-100;
+        text-decoration: underline;
+    }
+}
+
+
+

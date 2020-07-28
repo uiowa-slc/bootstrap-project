@@ -50,8 +50,9 @@ function copy(){
     themeDir + '/src/**/*',
     '!' + themeDir + '/src/{images,scripts,styles}/**',
     '!' + themeDir + '/src/{images,scripts,styles}',
-    '!src/{images,scripts,styles}',
-    '!src/{images,scripts,styles}/**',
+    'client/**/*',
+    '!client/{images,scripts,styles}/**',
+    '!client/{images,scripts,styles}',
     ],{dot: true})
     .pipe(gulp.dest(themeDir + '/dist/'))
     .pipe($.size({title: 'copy'}));
@@ -88,7 +89,7 @@ function styles(){
     .pipe($.sass({
       precision: 10,
       includePaths: [
-        './client/scss/',
+        './client/styles/',
         '../uiowa-bar/scss',
         './node_modules/'
       ]
@@ -105,10 +106,20 @@ function styles(){
 // to enable ES2015 support remove the line `"only": "gulpfile.babel.js",` in the
 // `.babelrc` file.
 function scripts(){
+
+    var projectScripts = PATHS.javascript;
+
+    var defaultScripts = [themeDir + '/src/scripts/lib/**/*',
+      themeDir + '/src/scripts/app.js'];
+
+    var combinedScripts = projectScripts.concat(defaultScripts);
+
+    //console.log(combinedScripts);
     return gulp.src(
-      PATHS.javascript
+      combinedScripts
     )
-      .pipe($.newer('.tmp/scripts'))
+      //this causes nothing but woe in an attempt to make things quicker, but dunno if necessary:
+      // .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
       .pipe($.babel())
       .pipe($.sourcemaps.write())
@@ -130,9 +141,12 @@ function clean(){
 
 function watch(){
   gulp.watch(['./client/styles/**/*.{scss,css}'], gulp.series(styles, reload));
+  gulp.watch(['./client/scripts/**/*.js'], gulp.series(lint, scripts, reload));
+  gulp.watch(['./templates/**/*'], reload);
   gulp.watch([themeDir + '/src/styles/**/*.{scss,css}'], gulp.series(styles, reload));
   gulp.watch([themeDir + '/src/scripts/**/*.js'], gulp.series(lint, scripts, reload));
   gulp.watch([themeDir + '/src/images/**/*'], gulp.series(images, reload));
+  gulp.watch([themeDir + '/templates/**/*'], reload);
 }
 
 function liveReloadInit(done){
