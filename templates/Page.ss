@@ -15,7 +15,7 @@
         <!-- Disable tap highlight on IE -->
         <meta name="msapplication-tap-highlight" content="no">
         <% include Favicons %>
-
+        $GoogleFonts
         $TypeKitScript
         <link rel="stylesheet" href="{$ThemeDir}/dist/styles/main.css">
     </head>
