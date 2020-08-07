@@ -140,6 +140,7 @@ function clean(){
 }
 
 function watch(){
+  gulp.watch(['./client/images/**/*'], gulp.series(images, reload));
   gulp.watch(['./client/styles/**/*.{scss,css}'], gulp.series(styles, reload));
   gulp.watch(['./client/scripts/**/*.js'], gulp.series(lint, scripts, reload));
   gulp.watch(['./templates/**/*'], reload);
