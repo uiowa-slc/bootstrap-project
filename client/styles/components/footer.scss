@@ -38,6 +38,33 @@
         color: $gray-100;
         text-decoration: underline;
     }
+    &__copyrightcontainer {
+            background-color: #fff;
+            color: #555;
+            a{
+                color: #222;
+            }
+        }
+        &__copyrightrow {
+            @include make-row();
+        }
+        &__copyright {
+            @include make-col-ready();
+            & p {
+                margin-bottom: 0;
+                line-height: 32px;
+            }
+            & a {
+                text-decoration: underline;
+            }
+        }
+        &__copyrightcontainer--newsletter {
+            & .footer__copyright {
+                @include media-breakpoint-up(md) {
+                    @include make-col(6);
+                }
+            }
+        }
 }
 
 

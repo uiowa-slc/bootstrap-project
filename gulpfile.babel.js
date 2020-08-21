@@ -114,9 +114,11 @@ function scripts(){
 
     var combinedScripts = projectScripts.concat(defaultScripts);
 
-    //console.log(combinedScripts);
+    console.log(combinedScripts);
     return gulp.src(
       combinedScripts
+
+
     )
       //this causes nothing but woe in an attempt to make things quicker, but dunno if necessary:
       // .pipe($.newer('.tmp/scripts'))
@@ -125,6 +127,11 @@ function scripts(){
       .pipe($.sourcemaps.write())
       // .pipe(gulp.dest('.tmp/scripts'))
       .pipe($.concat('main.min.js'))
+
+
+
+
+
       .pipe($.uglify())
       // Output files
       .pipe($.size({title: 'scripts'}))
