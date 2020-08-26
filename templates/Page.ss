@@ -32,6 +32,8 @@
     <% include Footer %>
     $BetterNavigator
 
+    <% include FooterScripts %>
+
     <script src="{$ThemeDir}/dist/scripts/main.min.js"></script>
 
     $Analytics
