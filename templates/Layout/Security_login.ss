@@ -3,7 +3,7 @@
 		<div class="col-md-8 col-lg-6 text-center">
             <h1>Log in to $SiteConfig.Title</h1>
 			$Content
-            <div class="mt-5 mb-5">
+            <div class="mt-5 mb-5 ml-auto mr-auto">
 			 $Form
             </div>
 		</div>
