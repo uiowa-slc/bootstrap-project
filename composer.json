@@ -7,6 +7,7 @@
       "php": ">=5.5",
       "silverstripe/recipe-cms": "4.6.*@stable",
       "md/ac-json-events":"3.*",
+      "jonom/focuspoint" : "*",
       "md/saml": "dev-md",
       "md/division-analytics": "1.*",
       "md/uiowa-bar": "2.*",
