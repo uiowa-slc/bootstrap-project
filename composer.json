@@ -2,12 +2,14 @@
     "name": "md/bootstrap-project",
     "description": "SLC Bootstrap Project",
     "type": "silverstripe-vendormodule",
+
     "minimum-stability": "dev",
     "require":
     {
         "php": ">=5.5",
         "silverstripe/recipe-cms": "4.6.*@stable",
         "md/ac-json-events": "3.*",
+        "jonom/focuspoint": "*",
         "md/saml": "dev-md",
         "md/division-analytics": "1.*",
         "md/uiowa-bar": "2.*",
@@ -19,6 +21,7 @@
         "undefinedoffset/sortablegridfield": "^2.0",
         "silverstripe/sharedraftcontent": "*",
         "quamsta/silverstripe-api-cacher": "1.*"
+
     },
     "repositories": [
     {
