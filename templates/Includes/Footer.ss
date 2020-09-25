@@ -177,6 +177,13 @@
                                 </a>
                             </li>
                         <% end_if %>
+                        <% if $SiteConfig.TwitchLink %>
+                            <li class="mb-2">
+                                <a href="$SiteConfig.TwitchLink" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
+                                    <i class="fab fa-twitch fa-2x pr-2 align-middle"></i>Twitch
+                                </a>
+                            </li>
+                        <% end_if %>
                     </ul>
                 </div>
             </div><!-- end col -->
