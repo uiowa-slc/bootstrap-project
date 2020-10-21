@@ -81,10 +81,7 @@ function styles() {
 
 
     // For best performance, don't add Sass partials to `gulp.src`
-    return gulp.src([
-            themeDir + '/src/styles/main.scss',
-            themeDir + '/src/styles/editor.scss'
-        ])
+    return gulp.src(themeDir + '/src/styles/*.scss')
         .pipe($.newer('.tmp/styles'))
         .pipe($.sourcemaps.init())
         .pipe($.sass({

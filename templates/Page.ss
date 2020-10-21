@@ -17,7 +17,8 @@
         <% include Favicons %>
         $GoogleFonts
         $TypeKitScript
-        <link rel="stylesheet" href="{$ThemeDir}/dist/styles/main.css">
+        <% require css("themes/bootstrap/dist/styles/main.css") %>
+   
     </head>
     <body class="{$ClassName}">
 
@@ -33,8 +34,8 @@
     $BetterNavigator
 
     <% include FooterScripts %>
+    <% require javascript("themes/bootstrap/dist/scripts/main.min.js") %>
 
-    <script src="{$ThemeDir}/dist/scripts/main.min.js"></script>
 
     $Analytics
   </body>
