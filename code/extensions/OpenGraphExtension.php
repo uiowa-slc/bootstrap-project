@@ -1,5 +1,6 @@
 <?php
 
+use SilverStripe\Assets\Image;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Convert;
 use SilverStripe\i18n\i18n;
