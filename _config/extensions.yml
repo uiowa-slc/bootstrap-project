@@ -6,3 +6,6 @@ After:
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - SiteConfigExtension
+Page:
+  extensions:
+    - OpenGraphExtension
