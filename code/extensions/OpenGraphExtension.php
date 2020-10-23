@@ -136,7 +136,7 @@ class OpenGraphExtension extends DataExtension {
 		if ($im && $im->exists()) {
 			return $this->getCanonicalURL($im->URL);
 		} else {
-			return Director::absoluteBaseURL() . "resources/vendor/md/bootstrap-project/client/images/og-dsl.png";
+			return Director::absoluteBaseURL() . "_resources/vendor/md/bootstrap-project/client/images/og-dsl.png";
 		}
 	}
 	public function getOpenGraph_title() {
