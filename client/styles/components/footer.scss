@@ -3,69 +3,93 @@
 -------------------------------------------*/
 .footer {
     font-size: $font-size-sm;
+
+    &__bar-link {
+
+        &:after {
+            display: inline-block;
+            padding-left: 5px;
+            content: "|"
+        }
+    }
     &__logo {
-        display:block;
+        display: block;
         max-width: 300px;
     }
+
     &__heading {
         font-size: $font-size-base;
     }
+
     &__buttons .btn {
         font-size: $font-size-base * .8;
     }
+
     &__socialmedia {
         & .fab {
             color: $highlight;
         }
+
         & li a {
             color: $gray-100;
             display: block;
-            &:hover, &:focus {
+
+            &:hover,
+            &:focus {
                 color: #fff;
+
                 & .fab {
                     color: $gray-100;
                 }
             }
         }
     }
+
     &__md {
         max-width: 36px;
     }
+
+
     &__address a {
         text-decoration: underline;
     }
+
     &__disclaimer a {
         color: $gray-100;
         text-decoration: underline;
     }
+
     &__copyrightcontainer {
-            background-color: #fff;
-            color: #555;
-            a{
-                color: #222;
+        background-color: #fff;
+        color: #555;
+
+        a {
+            color: #222;
+        }
+    }
+
+    &__copyrightrow {
+        @include make-row();
+    }
+
+    &__copyright {
+        @include make-col-ready();
+
+        & p {
+            margin-bottom: 0;
+            line-height: 32px;
+        }
+
+        & a {
+            text-decoration: underline;
+        }
+    }
+
+    &__copyrightcontainer--newsletter {
+        & .footer__copyright {
+            @include media-breakpoint-up(md) {
+                @include make-col(6);
             }
         }
-        &__copyrightrow {
-            @include make-row();
-        }
-        &__copyright {
-            @include make-col-ready();
-            & p {
-                margin-bottom: 0;
-                line-height: 32px;
-            }
-            & a {
-                text-decoration: underline;
-            }
-        }
-        &__copyrightcontainer--newsletter {
-            & .footer__copyright {
-                @include media-breakpoint-up(md) {
-                    @include make-col(6);
-                }
-            }
-        }
+    }
 }
-
-
-
