@@ -11,7 +11,7 @@
 	
 	
 			</article>
-			$Form
+
 			$PageComments
 
 		</div>
