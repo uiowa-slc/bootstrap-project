@@ -40,7 +40,7 @@
     }
 
     &__icon {
-        fill: $yellow;
+        fill: $gold;
         height: 20px;
 
         &:hover,
@@ -124,13 +124,13 @@
     background: $black;
 
     @include media-breakpoint-up(med) {
-        background: $yellow;
+        background: $gold;
     }
 
     .site-name {
         width: 100%;
         padding: 1.25rem;
-        background: $yellow;
+        background: $gold;
 
         @include media-breakpoint-up(med) {
             width: auto;
@@ -184,7 +184,7 @@
     &--tall {
         @include media-breakpoint-up(med) {
             height: 80px;
-            background: $yellow;
+            background: $gold;
         }
     }
 
@@ -206,7 +206,7 @@
         font-size: 1rem;
         margin: 0;
         padding: 1.25rem;
-        background: $yellow;
+        background: $gold;
 
         @include media-breakpoint-up(med) {
             background: transparent;
