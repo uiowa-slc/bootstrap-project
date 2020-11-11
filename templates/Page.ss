@@ -19,7 +19,7 @@
         $GoogleFonts
         $TypeKitScript
         <% require css("themes/bootstrap/dist/styles/main.css") %>
-   
+
     </head>
     <body class="{$ClassName}">
 
