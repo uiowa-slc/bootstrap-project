@@ -93,6 +93,17 @@ class OpenGraphExtension extends DataExtension {
 			'BackgroundImage',
 			'Picture',
 		);
+
+		if ($this->owner->ClassName == 'UiCalendarEvent') {
+
+			if ($this->owner->Image) {
+				//print_r($this->owner->Image);
+				return $this->owner->obj('Image');
+
+			}
+
+		}
+
 		//Try the above image fields
 		foreach ($tries as $t) {
 			// echo $t;
@@ -116,7 +127,7 @@ class OpenGraphExtension extends DataExtension {
 
 	public function getOpenGraph_image_height() {
 		$im = $this->owner->getOpenGraphImage();
-		if ($im && $im->exists()) {
+		if ($im) {
 			return $im->Height;
 		}
 		return "630";
@@ -124,7 +135,7 @@ class OpenGraphExtension extends DataExtension {
 
 	public function getOpenGraph_image_width() {
 		$im = $this->owner->getOpenGraphImage();
-		if ($im && $im->exists()) {
+		if ($im) {
 			return $im->Width;
 		} else {
 			return "1200";
@@ -133,7 +144,7 @@ class OpenGraphExtension extends DataExtension {
 
 	public function getOpenGraph_image() {
 		$im = $this->owner->getOpenGraphImage();
-		if ($im && $im->exists()) {
+		if ($im) {
 			return $this->getCanonicalURL($im->URL);
 		} else {
 			return Director::absoluteBaseURL() . "_resources/vendor/md/bootstrap-project/client/images/og-dsl.png";
