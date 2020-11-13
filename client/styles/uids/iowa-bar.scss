@@ -1,0 +1,269 @@
+/* Logo
+====================================================== */
+.uids-logo {
+    display: block;
+
+    &--tab {
+        margin-right: 10px;
+        height: 56px;
+        width: 109px;
+        padding: 18px 1.25rem;
+        background: $black;
+
+        a:focus svg {
+            opacity: .5;
+        }
+
+        @include media-breakpoint-up(med) {
+            height: 56px;
+            width: 119px;
+            padding: 15px;
+        }
+
+        // begin styles for iowa-bar--tall version
+        .iowa-bar--tall & {
+            margin-right: 20px;
+
+            @include media-breakpoint-up(med) {
+                width: 154px;
+                height: 80px;
+                padding: 25px;
+            }
+
+            @include media-breakpoint-up(xl) {
+                margin-bottom: 0;
+                width: 188px;
+                height: 90px;
+                padding: 23px 20px;
+            }
+        }
+    }
+
+    &__icon {
+        fill: $gold;
+        height: 20px;
+
+        &:hover,
+        &:focus {
+            opacity: 0.7;
+        }
+
+        @include media-breakpoint-up(med) {
+            height: 26px;
+        }
+
+        // begin styles for iowa-bar--tall version
+        .iowa-bar--tall & {
+            @include media-breakpoint-up(med) {
+                height: 30px;
+            }
+
+            @include media-breakpoint-up(xl) {
+                height: 43px;
+            }
+        }
+    }
+}
+
+/* Adds the notch look. Doesn't show on dark theme */
+.iowa-bar--light-header .uids-logo,
+.iowa-bar--overlay .uids-logo {
+    @include media-breakpoint-up(xl) {
+        margin-bottom: -6px;
+    }
+}
+
+/* Top Links
+=================================================== */
+.uids-toplinks {
+    display: flex;
+    align-self: center;
+
+    &__link {
+        color: #fff;
+        font-size: rem-calc(14);
+        font-weight: 300;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        @include media-breakpoint-up(med) {
+            color: #151515;
+
+            &:hover,
+            &:focus {
+                color: #151515;
+            }
+        }
+
+    }
+
+    &__item:nth-child(n+2) {
+        display: none;
+
+        @include media-breakpoint-up(med) {
+            display: inline-block;
+        }
+    }
+}
+
+
+
+/* Iowa Bar
+================================================= */
+
+// Settings for the default version of the IOWA bar.
+.iowa-bar {
+    position: relative;
+    z-index: 2;
+    display: block;
+    min-height: auto;
+    background: $black;
+
+    @include media-breakpoint-up(med) {
+        background: $gold;
+    }
+
+    .site-name {
+        width: 100%;
+        padding: 1.25rem;
+        background: $gold;
+
+        @include media-breakpoint-up(med) {
+            width: auto;
+            background: transparent;
+            padding: 0;
+        }
+
+        @include media-breakpoint-up(xl) {
+            margin: 5px 0 0 0;
+        }
+    }
+
+    &__container {
+        display: flex;
+
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 auto;
+
+        @include media-breakpoint-up(med) {
+            display: flex;
+        }
+
+        @include media-breakpoint-up(med) {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .iowa-bar--narrow.horizontal &,
+        .iowa-bar--narrow.mega & {
+            @include media-breakpoint-up(xl) {
+                position: relative;
+            }
+        }
+
+    }
+
+    &--dark-header {
+        border-bottom: 1px solid #444;
+
+        @include media-breakpoint-up(med) {
+            border-bottom: none;
+        }
+    }
+
+    &--overlay {
+        border-bottom: none;
+    }
+
+    // Styles for the narrow version of the IOWA bar.
+    &--tall {
+        @include media-breakpoint-up(med) {
+            height: 80px;
+            background: $gold;
+        }
+    }
+
+    // Styles for the narrow version of the IOWA bar.
+    &--narrow {
+        @include media-breakpoint-up(med) {
+            min-height: 50px;
+            position: relative;
+        }
+    }
+
+    .parent-site-name {
+        @include media-breakpoint-up(xl) {
+            padding: 6px 0 0 0;
+        }
+    }
+
+    .site-name {
+        font-size: 1rem;
+        margin: 0;
+        padding: 1.25rem;
+        background: $gold;
+
+        @include media-breakpoint-up(med) {
+            background: transparent;
+            font-size: 1rem;
+            padding: 0;
+        }
+
+        @include media-breakpoint-up(xl) {
+            padding: 6px 0 0 0;
+        }
+    }
+
+
+    // Styles for container underneath
+    &__below {
+        z-index: 2;
+        border-bottom: 1px solid #e6e5e5;
+        background: #fff;
+
+        & .iowa-bar__container {
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-right: 0;
+            margin-left: 0;
+
+            @include media-breakpoint-up(med) {
+                display: flex;
+                position: unset;
+                min-height: 90px;
+                justify-content: unset;
+                margin-right: auto;
+                padding-left: 1.25rem;
+            }
+
+            @include media-breakpoint-up(xl) {
+                margin-left: auto;
+                padding-left: 0;
+            }
+        }
+
+        // Override .site-name styles when
+        // displayed underneath the iowa-bar.
+        .site-name {
+            margin: 0;
+            text-align: left;
+            font-size: 1.8rem;
+
+            @include media-breakpoint-up(med) {
+                width: 75%;
+                padding: 25px 20px 25px 0;
+                background: transparent;
+                font-size: 2rem;
+            }
+
+            @include media-breakpoint-up(xl) {
+                font-size: 2.2rem;
+            }
+        }
+    }
+}
