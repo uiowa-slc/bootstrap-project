@@ -1,10 +1,9 @@
 /* Buttons
 Class names to use in template
-normal: "button"
-black: "button black"
-large: "button large"
-hollow: "button hollow", "button hollow black"
-clear: "button clear", "button clear black"
+normal: "btn btn-primary"
+outline: "btn btn-outline-primary"
+clear: "btn btn-clear"
+gold: "btn btn-gold"
 /*
 
 /* Foundation button changes */
@@ -135,23 +134,6 @@ clear: "button clear", "button clear black"
 .main-content__text .btn {
     text-decoration: none;
 }
-
-
-//Used in TopicHolder "browse by" tags:
-.btn--flex-full {
-    display: flex;
-    height: 100%;
-}
-
-// .btn--skinny {
-//     padding: 5px;
-
-//     @include breakpoint(large) {
-//         padding: 10px;
-//     }
-// }
-
-
 
 
 
