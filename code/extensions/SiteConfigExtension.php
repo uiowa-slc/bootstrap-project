@@ -54,6 +54,9 @@ class SiteConfigExtension extends DataExtension {
 		'QuickLinkURLTwo' => 'Text',
 		'QuickLinkURLThree' => 'Text',
 		'Disclaimer' => 'HTMLText',
+
+		'EnableUidsIowaBar' => 'Boolean',
+		'UidsIowaBarContainerType' => 'Text',
 	);
 
 	private static $has_one = array(
@@ -114,15 +117,18 @@ class SiteConfigExtension extends DataExtension {
 		$fields->addFieldToTab('Root.Main', new TextField('TwitchLink', 'Twitch Account URL'));
 		$fields->addFieldToTab('Root.Main', HTMLEditorField::create('Disclaimer', 'Additional disclaimer (shows in small text under social media)')->setRows(3));
 
-		$fields->addFieldToTab("Root.Main", new HeaderField('HeaderQuickLinks', 'Header Quick Links'));
-		$fields->addFieldToTab('Root.Main', new TextField('QuickLinkTitleOne', 'Quick Link Title'));
-		$fields->addFieldToTab('Root.Main', new TextField('QuickLinkURLOne', 'Quick Link URL'));
+		$fields->addFieldToTab("Root.IowaBar", new HeaderField('HeaderQuickLinks', 'Header Quick Links'));
+		$fields->addFieldToTab('Root.IowaBar', new TextField('QuickLinkTitleOne', 'Quick Link Title'));
+		$fields->addFieldToTab('Root.IowaBar', new TextField('QuickLinkURLOne', 'Quick Link URL'));
 
-		$fields->addFieldToTab('Root.Main', new TextField('QuickLinkTitleTwo', 'Quick Link Title'));
-		$fields->addFieldToTab('Root.Main', new TextField('QuickLinkURLTwo', 'Quick Link URL'));
+		$fields->addFieldToTab('Root.IowaBar', new TextField('QuickLinkTitleTwo', 'Quick Link Title'));
+		$fields->addFieldToTab('Root.IowaBar', new TextField('QuickLinkURLTwo', 'Quick Link URL'));
 
-		$fields->addFieldToTab('Root.Main', new TextField('QuickLinkTitleThree', 'Quick Link Title'));
-		$fields->addFieldToTab('Root.Main', new TextField('QuickLinkURLThree', 'Quick Link URL'));
+		$fields->addFieldToTab('Root.IowaBar', new TextField('QuickLinkTitleThree', 'Quick Link Title'));
+		$fields->addFieldToTab('Root.IowaBar', new TextField('QuickLinkURLThree', 'Quick Link URL'));
+
+		$fields->addFieldToTab('Root.IowaBar', new CheckboxField('EnableUidsIowaBar', 'Enable new UIDS Iowa Bar (experimental)'));
+		$fields->addFieldToTab('Root.IowaBar', TextField::create('UidsIowaBarContainerType', 'UIDS Iowa Bar container type')->setDescription('Default is container-xl, other options are container-fluid, container-lg, container-xl, etc.'));
 
 		$fields->addFieldToTab("Root.Main", new HeaderField('NewsletterSignup', 'Newsletter Signup'));
 		$fields->addFieldToTab('Root.Main', new TextareaField('MailChimpFormEmbed', 'MailChimp Form Embed Code'));

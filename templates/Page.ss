@@ -25,13 +25,18 @@
 
     <a class="sr-only sr-only-focusable" href="{$Link}#content">Skip to main content</a>
 
-    <% include UiowaBar %>
-
+    <% if $SiteConfig.EnableUidsIowaBar %>
+        <% include IowaBar %>
+    <% else %>
+        <% include UiowaBar %>
+    <% end_if %>
     $Layout
 
 
 
+    <% if $URLSegment != "Security" %>
     <% include Footer %>
+    <% end_if %>
     $BetterNavigator
 
     <% include FooterScripts %>

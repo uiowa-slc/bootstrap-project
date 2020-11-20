@@ -8,14 +8,13 @@
         height: 56px;
         width: 109px;
         padding: 18px 1.25rem;
-        background: $black
-;
+        background: $black;
 
         a:focus svg {
             opacity: .5;
         }
 
-        @include media-breakpoint-up(med) {
+        @include media-breakpoint-up(md) {
             height: 56px;
             width: 119px;
             padding: 15px;
@@ -25,7 +24,7 @@
         .iowa-bar--tall & {
             margin-right: 20px;
 
-            @include media-breakpoint-up(med) {
+            @include media-breakpoint-up(md) {
                 width: 154px;
                 height: 80px;
                 padding: 25px;
@@ -49,13 +48,13 @@
             opacity: 0.7;
         }
 
-        @include media-breakpoint-up(med) {
+        @include media-breakpoint-up(md) {
             height: 26px;
         }
 
         // begin styles for iowa-bar--tall version
         .iowa-bar--tall & {
-            @include media-breakpoint-up(med) {
+            @include media-breakpoint-up(md) {
                 height: 30px;
             }
 
@@ -91,7 +90,7 @@
             color: #fff;
         }
 
-        @include media-breakpoint-up(med) {
+        @include media-breakpoint-up(md) {
             color: #151515;
 
             &:hover,
@@ -105,7 +104,7 @@
     &__item:nth-child(n+2) {
         display: none;
 
-        @include media-breakpoint-up(med) {
+        @include media-breakpoint-up(md) {
             display: inline-block;
         }
     }
@@ -124,7 +123,7 @@
     min-height: auto;
     background: $black;
 
-    @include media-breakpoint-up(med) {
+    @include media-breakpoint-up(md) {
         background: $gold;
     }
 
@@ -133,7 +132,7 @@
         padding: 1.25rem;
         background: $gold;
 
-        @include media-breakpoint-up(med) {
+        @include media-breakpoint-up(md) {
             width: auto;
             background: transparent;
             padding: 0;
@@ -151,11 +150,11 @@
         justify-content: space-between;
         margin: 0 auto;
 
-        @include media-breakpoint-up(med) {
+        @include media-breakpoint-up(md) {
             display: flex;
         }
 
-        @include media-breakpoint-up(med) {
+        @include media-breakpoint-up(md) {
             margin-right: auto;
             margin-left: auto;
         }
@@ -163,7 +162,7 @@
         .iowa-bar--narrow.horizontal &,
         .iowa-bar--narrow.mega & {
             @include media-breakpoint-up(xl) {
-                position: relative;
+                position: rela tive;
             }
         }
 
@@ -172,7 +171,7 @@
     &--dark-header {
         border-bottom: 1px solid #444;
 
-        @include media-breakpoint-up(med) {
+        @include media-breakpoint-up(md) {
             border-bottom: none;
         }
     }
@@ -183,7 +182,7 @@
 
     // Styles for the narrow version of the IOWA bar.
     &--tall {
-        @include media-breakpoint-up(med) {
+        @include media-breakpoint-up(md) {
             height: 80px;
             background: $gold;
         }
@@ -191,7 +190,7 @@
 
     // Styles for the narrow version of the IOWA bar.
     &--narrow {
-        @include media-breakpoint-up(med) {
+        @include media-breakpoint-up(md) {
             min-height: 50px;
             position: relative;
         }
@@ -209,7 +208,7 @@
         padding: 1.25rem;
         background: $gold;
 
-        @include media-breakpoint-up(med) {
+        @include media-breakpoint-up(md) {
             background: transparent;
             font-size: 1rem;
             padding: 0;
@@ -233,7 +232,7 @@
             margin-right: 0;
             margin-left: 0;
 
-            @include media-breakpoint-up(med) {
+            @include media-breakpoint-up(md) {
                 display: flex;
                 position: unset;
                 min-height: 90px;
@@ -255,7 +254,7 @@
             text-align: left;
             font-size: 1.8rem;
 
-            @include media-breakpoint-up(med) {
+            @include media-breakpoint-up(md) {
                 width: 75%;
                 padding: 25px 20px 25px 0;
                 background: transparent;
