@@ -1,8 +1,9 @@
 /* Buttons
 Class names to use in template
 normal: "btn btn-primary"
+black: "btn btn-dark"
 outline: "btn btn-outline-primary"
-clear: "btn btn-clear"
+clear: "btn btn-outline-dark"
 gold: "btn btn-gold"
 /*
 
@@ -59,7 +60,7 @@ gold: "btn btn-gold"
 }
 
 // Black button
-.btn.black {
+.btn-dark {
     & svg {
         color: $highlight; // Icon
     }
@@ -88,10 +89,16 @@ gold: "btn btn-gold"
         background: $body-bg;
     }
 
-    &.black {
-        & svg {
-            color: $black; // Icon
-        }
+
+}
+
+.btn-outline-dark {
+    & svg {
+        color: $black; // Icon
+    }
+
+    &::after {
+        background-color: $highlight; // Hover animation
     }
 }
 
