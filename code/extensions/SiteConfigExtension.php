@@ -150,7 +150,31 @@ class SiteConfigExtension extends DataExtension {
 		return false;
 
 	}
+	public function getInstagramHandle() {
+		$config = SiteConfig::current_site_config();
 
+		if ($url = $config->InstagramLink) {
+
+			if (preg_match("/(?:(?:http|https):\/\/)?(?:www\.)?(?:instagram\.com|instagr\.am)\/([A-Za-z0-9-_\.]+)/im", $url, $regs)) {
+				return $regs[1];
+			}
+		}
+
+		return false;
+
+	}
+	public function getFacebookHandle() {
+		$config = SiteConfig::current_site_config();
+
+		if ($url = $config->FacebookLink) {
+			if (preg_match("/^https?:\/\/(www\.)?facebook\.com\/(#!\/)?(?<name>[^\/]+)(\/\w+)*$/", $url, $regs)) {
+				return $regs['name'];
+			}
+		}
+
+		return false;
+
+	}
 	public function UITrackingID() {
 		$config = SiteConfig::current_site_config();
 

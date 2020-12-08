@@ -1,5 +1,4 @@
 <%-- NOTE: Before including this, you will need to wrap the include in a with block  --%>
-
 <% if $MoreThanOnePage %>
 	<ul class="pagination">
 		<% if $NotFirstPage %>
