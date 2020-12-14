@@ -40,7 +40,6 @@ class SiteConfigExtension extends DataExtension {
 		'DisableDivisionBranding' => 'Boolean',
 		'ShowExitButton' => 'Boolean',
 		'UseDarkTheme' => 'Boolean',
-		'MailChimpFormEmbed' => 'HTMLText',
 		'ButtonTextOne' => 'Text',
 		'ButtonUrlOne' => 'Text',
 		'ButtonTextTwo' => 'Text',
@@ -89,9 +88,7 @@ class SiteConfigExtension extends DataExtension {
 		$fields->addFieldToTab('Root.Main', new TextField('State', 'State'));
 		$fields->addFieldToTab('Root.Main', new TextField('Zipcode', 'Zip Code'));
 		$fields->addFieldToTab('Root.Main', new TextField('Fax', 'Fax Number'));
-		$fields->addFieldToTab('Root.Main', new TextField('PhoneLabel', 'Phone Label (Phone:)'));
 		$fields->addFieldToTab('Root.Main', new TextField('PhoneNumber', 'Main Phone Number'));
-		$fields->addFieldToTab('Root.Main', new TextField('PhoneLabelAlt', 'Alternate Phone Label'));
 		$fields->addFieldToTab('Root.Main', new TextField('PhoneNumberAlt', 'Alternate Phone Number'));
 		$fields->addFieldToTab('Root.Main', new TextField('EmailAddress', 'Email Address'));
 
@@ -129,11 +126,7 @@ class SiteConfigExtension extends DataExtension {
 
 		$fields->addFieldToTab('Root.IowaBar', new CheckboxField('EnableUidsIowaBar', 'Enable new UIDS Iowa Bar (experimental)'));
 		$fields->addFieldToTab('Root.IowaBar', TextField::create('UidsIowaBarContainerType', 'UIDS Iowa Bar container type')->setDescription('Default is container-xl, other options are container-fluid, container-lg, container-xl, etc.'));
-
-		$fields->addFieldToTab("Root.Main", new HeaderField('NewsletterSignup', 'Newsletter Signup'));
-		$fields->addFieldToTab('Root.Main', new TextareaField('MailChimpFormEmbed', 'MailChimp Form Embed Code'));
-		$fields->addFieldToTab("Root.Main", $MailChimpFormEmbed = new TextareaField("MailChimpFormEmbed", "MailChimp Form Embed Code"));
-		$MailChimpFormEmbed->setDescription("More info: <a href='' target='_blank'>How to get this code &rarr;</a>");
+		
 
 		return $fields;
 	}

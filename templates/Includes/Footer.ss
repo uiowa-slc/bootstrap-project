@@ -2,7 +2,7 @@
 <footer class="footer bg-dark text-light">
     <div class="footer__container container-xl <% if $SiteConfig.FacebookLink || $SiteConfig.TwitterLink || $SiteConfig.VimeoLink || $SiteConfig.YouTubeLink || $SiteConfig.InstagramLink || $SiteConfig.LinkedInLink || $SiteConfig.PinterestLink || $SiteConfig.FlickrLink %>footer__container--with-social<% end_if %>">
         <div class="row py-5">
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="footer__info pb-3">
                     <% if $SiteConfig.FooterLogo %>
                         <div class="footer__logo">
@@ -36,55 +36,161 @@
                                     <br /><span itemprop="streetAddress">$Address1</span>
                                 <% end_if %>
                                 <% if $City %><br /><span itemprop="addressLocality">$City</span><% end_if %><% if $State %>, <span itemprop="addressRegion">$State</span><% end_if %><% if $Zipcode %> <span itemprop="postalCode">$Zipcode</span><% end_if %>
+                                <br />
                                 <% if $PhoneNumber %>
-                                    <br /><% if $PhoneLabel %>$PhoneLabel <% end_if %><span itemprop="telephone">$PhoneNumber</span>
+                                    <br />
+                                    <a href="tel:$PhoneNumber">
+                                        <i class="fas fa-phone mr-2"></i>$PhoneNumber
+                                    </a>
                                 <% end_if %>
+
                                 <% if $PhoneNumberAlt %>
-                                    <br /><% if $PhoneLabelAlt %>$PhoneLabelAlt <% end_if %>$PhoneNumberAlt
+                                    <br />
+                                    <a href="tel:$PhoneNumberAlt" class="p">
+                                        <i class="fas fa-phone mr-2"></i>$PhoneNumberAlt
+                                    </a>
                                 <% end_if %>
+
                                 <% if $Fax %>
-                                    <br />Fax: <span itemprop="faxNumber">$Fax</span>
+                                    <br /> <i class="fas fa-fax mr-2 "></i>$Fax
                                 <% end_if %>
+
                                 <% if $EmailAddress %>
                                     <br />
-                                    <a href="mailto:$EmailAddress" class="text-light">
-                                        <span itemprop="email">$EmailAddress</span>
+                                    <a href="mailto:$EmailAddress">
+                                        <i class="fas fa-envelope-open mr-2"></i>$EmailAddress
                                     </a>
                                 <% end_if %>
                             <% end_if %>
                         </p>
                         <% end_with %>
                     </div>
+                    <% if $SiteConfig.FacebookLink || $SiteConfig.TwitterLink || $SiteConfig.VimeoLink || $SiteConfig.YouTubeLink || $SiteConfig.InstagramLink || $SiteConfig.LinkedInLink || $SiteConfig.PinterestLink || $SiteConfig.FlickrLink %>
+                        <nav aria-labelledby="footer-social">
+                            <h2 class="sr-only" id="footer-social">Social Media</h2>
+                            <ul class="footer__socialmedia">
+                                <% if $SiteConfig.FacebookLink %>
+                                    <li>
+                                        <a href="$SiteConfig.FacebookLink" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-facebook-square fa-2x pr-2 align-middle"></i>
+                                            <span class="sr-only">Facebook</span>
+                                        </a>
+                                    </li>
+                                <% end_if %>
+                                <% if $SiteConfig.TwitterLink %>
+                                    <li>
+                                        <a href="$SiteConfig.TwitterLink" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-twitter-square fa-2x pr-2 align-middle"></i>
+                                            <span class="sr-only">Twitter</span>
+                                        </a>
+                                    </li>
+                                <% end_if %>
+                                <% if $SiteConfig.VimeoLink %>
+                                    <li>
+                                        <a href="$SiteConfig.VimeoLink" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-vimeo-square fa-2x pr-2 align-middle"></i>
+                                            <span class="sr-only">Vimeo</span>
+                                        </a>
+                                    </li>
+                                <% end_if %>
+                                <% if $SiteConfig.YouTubeLink %>
+                                    <li>
+                                        <a href="$SiteConfig.YouTubeLink" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-youtube fa-2x pr-2 align-middle"></i>
+                                            <span class="sr-only">Youtube</span>
+                                        </a>
+                                    </li>
+                                <% end_if %>
+                                <% if $SiteConfig.InstagramLink %>
+                                    <li>
+                                        <a href="$SiteConfig.InstagramLink" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-instagram fa-2x pr-2 align-middle"></i>
+                                            <span class="sr-only">Instagram</span>
+                                        </a>
+                                    </li>
+                                <% end_if %>
+                                <% if $SiteConfig.LinkedInLink %>
+                                    <li>
+                                        <a href="$SiteConfig.LinkedInLink" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-linkedin-in fa-2x pr-2 align-middle"></i>
+                                            <span class="sr-only">LinkedIn</span>
+                                        </a>
+                                    </li>
+                                <% end_if %>
+                                <% if $SiteConfig.PinterestLink %>
+                                    <li>
+                                        <a href="$SiteConfig.PinterestLink" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-pinterest fa-2x pr-2 align-middle"></i>
+                                            <span class="sr-only">Pinterest</span>
+                                        </a>
+                                    </li>
+                                <% end_if %>
+                                <% if $SiteConfig.FlickrLink %>
+                                    <li>
+                                        <a href="$SiteConfig.FlickrLink" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-flickr fa-2x pr-2 align-middle"></i>
+                                            <span class="sr-only">Flickr</span>
+                                        </a>
+                                    </li>
+                                <% end_if %>
+                                <% if $SiteConfig.Github %>
+                                    <li>
+                                        <a href="$SiteConfig.Github" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-github-square fa-2x pr-2 align-middle"></i>
+                                            <span class="sr-only">Github</span>
+                                        </a>
+                                    </li>
+                                <% end_if %>
+                                <% if $SiteConfig.Snapchat %>
+                                    <li>
+                                        <a href="https://www.snapchat.com/add/$SiteConfig.Snapchat" target="_blank"  rel="noopener noreferrer">
+                                            <i class="fab fa-snapchat fa-2x pr-2 align-middle"></i>
+                                            <span class="sr-only">Snapchat</span>
+                                        </a>
+                                    </li>
+                                <% end_if %>
+                                <% if $SiteConfig.TwitchLink %>
+                                    <li>
+                                        <a href="$SiteConfig.TwitchLink" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-twitch fa-2x pr-2 align-middle"></i>
+                                            <span class="sr-only">Twitch</span>
+                                        </a>
+                                    </li>
+                                <% end_if %>
+                            </ul>
+                            
+                        </nav>
+                    <% end_if %>
                 </div><!-- end footer__info -->
             </div><!-- end .col -->
-            <div class="col-12 col-sm-6 col-lg-6">
-                <div class="footer__navigation pb-3 <% if $SiteConfig.ButtonUrlOne || $SiteConfig.ButtonUrlTwo || $SiteConfig.ButtonUrlThree %>footer__navigation--with-buttons <% end_if %>">
-                    <%-- <h3 class="footer__heading text-uppercase pb-1 mb-3 border-bottom border-secondary font-weight-normal">Quick Links</h3> --%>
+            <div class="col-12 col-md-6 col-lg-8">
+                <div class="footer__navigation pb-3">
                     <div class="row">
                         <% if $Menu(1).Count > 1 %>
-                        <div class="col">
-                            <div class="footer__links">
-                                <ul class="list-unstyled row">
-                                    <% loop Menu(1) %>
-                                        <li class="<% if $SiteConfig.ButtonUrlOne %>col-6<% else %>col-6 col-lg-4<% end_if %>">
-                                            <a href="$Link" class="text-light d-block py-2">$MenuTitle</a>
-                                        </li>
-                                    <% end_loop %>
-                                </ul>
+                            <div class="col">
+                                <div class="footer__links">
+                                    <h2 class="sr-only" id="footer-social">Footer Navigation</h2>
+                                    <ul class="list-unstyled row">
+                                        <% loop Menu(1) %>
+                                            <li class="<% if $SiteConfig.ButtonUrlOne %>col-6<% else %>col-6 col-lg-4<% end_if %>">
+                                                <a href="$Link" class="text-light d-block py-2">$MenuTitle</a>
+                                            </li>
+                                        <% end_loop %>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
                         <% end_if %>
                         <% if $SiteConfig.ButtonUrlOne || $SiteConfig.ButtonUrlTwo || $SiteConfig.ButtonUrlThree %>
-                            <div class="col-xl-4">
+                            <div class="col-lg-4">
                                 <div class="footer__buttons py-2">
                                     <% if $SiteConfig.ButtonUrlOne %>
-                                        <a href="$SiteConfig.ButtonUrlOne" class="btn d-block d-sm-inline-block d-xl-block btn-outline-light mr-1 mb-1" target="_blank">$SiteConfig.ButtonTextOne</a>
+                                        <a href="$SiteConfig.ButtonUrlOne" class="btn d-block d-sm-inline-block d-lg-block btn-outline-warning mr-1 mb-1" target="_blank">$SiteConfig.ButtonTextOne <i class="fas fa-arrow-right"></i></a>
                                     <% end_if %>
                                     <% if $SiteConfig.ButtonUrlTwo %>
-                                        <a href="$SiteConfig.ButtonUrlTwo" class="btn d-block d-sm-inline-block d-xl-block btn-outline-light mr-1 mb-1" target="_blank">$SiteConfig.ButtonTextTwo</a>
+                                        <a href="$SiteConfig.ButtonUrlTwo" class="btn d-block d-sm-inline-block d-lg-block btn-outline-warning mr-1 mb-1" target="_blank">$SiteConfig.ButtonTextTwo <i class="fas fa-arrow-right"></i></a>
                                     <% end_if %>
                                     <% if $SiteConfig.ButtonUrlThree %>
-                                        <a href="$SiteConfig.ButtonUrlThree" class="btn d-block d-sm-inline-block d-xl-block btn-outline-light mr-1 mb-1" target="_blank">$SiteConfig.ButtonTextThree</a>
+                                        <a href="$SiteConfig.ButtonUrlThree" class="btn d-block d-sm-inline-block d-lg-block btn-outline-warning mr-1 mb-1" target="_blank">$SiteConfig.ButtonTextThree <i class="fas fa-arrow-right"></i></a>
                                     <% end_if %>
                                 </div>
                             </div>
@@ -103,93 +209,6 @@
                 </div>
             </div><!-- end .col -->
 
-            <% if $SiteConfig.FacebookLink || $SiteConfig.TwitterLink || $SiteConfig.VimeoLink || $SiteConfig.YouTubeLink || $SiteConfig.InstagramLink || $SiteConfig.LinkedInLink || $SiteConfig.PinterestLink || $SiteConfig.FlickrLink %>
-            <div class="col-12 col-lg-2">
-                <div class="footer__socialmedia" itemscope itemtype="http://schema.org/Organization">
-                    <link itemprop="url" href="$AbsoluteBaseURL">
-                    <%-- <h3 class="footer__heading text-uppercase pb-1 mb-3 border-bottom border-secondary font-weight-normal">Social Media</h3> --%>
-                    <ul class="list-unstyled">
-                        <% if $SiteConfig.FacebookLink %>
-                            <li class="mb-2">
-                                <a href="$SiteConfig.FacebookLink" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
-                                    <i class="fab fa-facebook-square fa-2x pr-2 align-middle"></i>Facebook
-                                </a>
-                            </li>
-                        <% end_if %>
-                        <% if $SiteConfig.TwitterLink %>
-                            <li class="mb-2">
-                                <a href="$SiteConfig.TwitterLink" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
-                                    <i class="fab fa-twitter-square fa-2x pr-2 align-middle"></i>Twitter
-                                </a>
-                            </li>
-                        <% end_if %>
-                        <% if $SiteConfig.VimeoLink %>
-                            <li class="mb-2">
-                                <a href="$SiteConfig.VimeoLink" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
-                                    <i class="fab fa-vimeo-square fa-2x pr-2 align-middle"></i>Vimeo
-                                </a>
-                            </li>
-                        <% end_if %>
-                        <% if $SiteConfig.YouTubeLink %>
-                            <li class="mb-2">
-                                <a href="$SiteConfig.YouTubeLink" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
-                                    <i class="fab fa-youtube-square fa-2x pr-2 align-middle"></i>YouTube
-                                </a>
-                            </li>
-                        <% end_if %>
-                        <% if $SiteConfig.InstagramLink %>
-                            <li class="mb-2">
-                                <a href="$SiteConfig.InstagramLink" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
-                                    <i class="fab fa-instagram-square fa-2x pr-2 align-middle"></i>Instagram
-                                </a>
-                            </li>
-                        <% end_if %>
-                        <% if $SiteConfig.LinkedInLink %>
-                            <li class="mb-2">
-                                <a href="$SiteConfig.LinkedInLink" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
-                                    <i class="fab fa-linkedin fa-2x pr-2 align-middle"></i>LinkedIn
-                                </a>
-                            </li>
-                        <% end_if %>
-                        <% if $SiteConfig.PinterestLink %>
-                            <li class="mb-2">
-                                <a href="$SiteConfig.PinterestLink" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
-                                    <i class="fab fa-pinterest-square fa-2x pr-2 align-middle"></i>Pinterest
-                                </a>
-                            </li>
-                        <% end_if %>
-                        <% if $SiteConfig.FlickrLink %>
-                            <li class="mb-2">
-                                <a href="$SiteConfig.FlickrLink" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
-                                    <i class="fab fa-flickr fa-2x pr-2 align-middle"></i>Flickr
-                                </a>
-                            </li>
-                        <% end_if %>
-                        <% if $SiteConfig.Github %>
-                            <li class="mb-2">
-                                <a href="$SiteConfig.Github" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
-                                    <i class="fab fa-github-square fa-2x pr-2 align-middle"></i>Github
-                                </a>
-                            </li>
-                        <% end_if %>
-                        <% if $SiteConfig.Snapchat %>
-                            <li class="mb-2">
-                                <a href="https://www.snapchat.com/add/$SiteConfig.Snapchat" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
-                                    <i class="fab fa-snapchat-square fa-2x pr-2 align-middle"></i>Snapchat
-                                </a>
-                            </li>
-                        <% end_if %>
-                        <% if $SiteConfig.TwitchLink %>
-                            <li class="mb-2">
-                                <a href="$SiteConfig.TwitchLink" target="_blank" class="py-1" itemprop="sameAs" rel="noopener noreferrer">
-                                    <i class="fab fa-twitch fa-2x pr-2 align-middle"></i>Twitch
-                                </a>
-                            </li>
-                        <% end_if %>
-                    </ul>
-                </div>
-            </div><!-- end col -->
-            <% end_if %>
         </div><!-- end row -->
     </div><!-- end container -->
     <% include FooterCopyright %>
