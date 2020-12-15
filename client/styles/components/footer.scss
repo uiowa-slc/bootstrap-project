@@ -52,6 +52,9 @@
     &__address {
         & a {
             color: $gold;
+            &:hover, &:focus {
+                text-decoration: underline;
+            }
         }
         & i {
             color: $gray-600;

@@ -58,7 +58,7 @@
                                 <% if $EmailAddress %>
                                     <br />
                                     <a href="mailto:$EmailAddress">
-                                        <i class="fas fa-envelope-open mr-2"></i>$EmailAddress
+                                        <i class="fas fa-envelope-open mr-2"></i>Contact Us
                                     </a>
                                 <% end_if %>
                             <% end_if %>
@@ -169,7 +169,7 @@
                         <% if $Menu(1).Count > 1 %>
                             <div class="col">
                                 <div class="footer__links">
-                                    <h2 class="sr-only" id="footer-social">Footer Navigation</h2>
+                                    <h2 class="sr-only">Footer Navigation</h2>
                                     <ul class="list-unstyled row">
                                         <% loop Menu(1) %>
                                             <li class="<% if $SiteConfig.ButtonUrlOne %>col-6<% else %>col-6 col-lg-4<% end_if %>">
