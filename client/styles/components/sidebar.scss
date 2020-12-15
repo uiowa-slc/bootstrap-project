@@ -1,62 +1,86 @@
 /* ---------------------------------------------------------------
-Sidebar
+Subnavigation
 --------------------------------------------------------------- */
+$sidenav-bgcolor: $gray-100 !default;
+$sidenav-bordercolor: $primary !default;
+$sidenav-linkcolor: $gray-700 !default;
+
 .sidenav {
-    padding: 3rem 1rem;
-    background: $gray-100;
-    position: relative;
-    border-left: 5px solid $gray-900;
-    &__title {
-        font-size: 12px;
-        background: $highlight;
-        display: inline-block;
-        color: $black;
-        margin: 0;
-        padding: 8px 14px;
-        line-height: 1;
-        position: absolute;
-        top: 0;
-        left: 1.5rem;
-        font-family: $font-family-base;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        & a {
-            color: $black;
-        }
-    }
-    &__list {
-        list-style: none;
-        margin: 0;
+    background-color: $sidenav-bgcolor;
+    border: 1px solid darken($sidenav-bgcolor, 10%);
+    @include media-breakpoint-up(lg) {
         padding: 0;
-        &--sub {
-            background-color: $gray-200;
+        border: none;
+        border-left: 5px solid $sidenav-bordercolor;
+    }
+
+    & .navbar-nav {
+        @include media-breakpoint-up(lg) {
+            padding: $spacer;
         }
     }
-    &__link {
-        border-bottom: 1px solid $gray-200;
-        display: block;
-        color: $gray-700;
-        font-size: 15px;
-        padding: 12px 6px 12px;
+
+    // Links
+    & .navbar-nav .nav-link {
+        color: $sidenav-linkcolor;
+        font-size: $font-size-sm;
+        padding: 10px 6px;
         &--current {
-            background-color: $gray-200;
-        }
-        &--sub {
-            text-transform: none;
-            font-size: 13px;
-            line-height: 1.4;
+            font-weight: bold;
         }
         &:hover, &:focus {
-            color: $gray-800;
             text-decoration: underline;
         }
+        @include media-breakpoint-up(lg) {
+            padding: 14px 6px;
+        }
     }
-    @include media-breakpoint-up(lg) {
-        padding: 3rem 1.5rem;
-        position: sticky;
-        top: 100px;
+
+    & .navbar-nav .nav-item {
+        border-bottom: 1px solid darken($sidenav-bgcolor, 10%);
+
+        // Curent
+        &--current, &--section {
+            background-color: darken($sidenav-bgcolor, 3%);
+        }
+
+        // Section Title
+        &--first .nav-link {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        // Begin Second Level navigation
+        & .nav-item {
+            border-bottom: none;
+            border-top: 1px solid darken($sidenav-bgcolor, 10%);
+            & .nav-link {
+                border-bottom: none;
+                padding: 10px 10px 10px 20px;
+                position: relative;
+                &::before {
+                    content: "- ";
+                    position: absolute;
+                    left: 10px;
+                    top: 10px;
+                }
+            }
+        }
+    }
+
+    // Toggle Dropdown
+    & .navbar-brand {
+        color: $sidenav-linkcolor;
+    }
+    & .navbar-toggler {
+        background-color: $gray-100;
+        border-color: darken($sidenav-bgcolor, 10%);
+    }
+
+    & .navbar-collapse {
+        @include media-breakpoint-up(lg) {
+            display: block !important;
+        }
     }
 }
-
-
-
