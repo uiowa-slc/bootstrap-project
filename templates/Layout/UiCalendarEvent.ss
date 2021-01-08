@@ -30,6 +30,7 @@
                     <p>
                    <% if $isOnline %>
                     <strong>Location:</strong> Online <i aria-hidden="true" class="fas fa-laptop-house"></i><br />
+
                     <% else %>
 
     					<% if $Venue.Title || $Location %>
@@ -50,13 +51,22 @@
                     <% end_if %>
 					</p>
 				<% end_if %>
-                    <% if $OnlineLocationUrl %>
-                        <% if $OnlineLocationType == "Zoom" %>
-                            <p><a class="btn btn-primary btn-zoom" href="$OnlineLocationUrl" rel="noopener" target="_blank">Zoom link <i aria-hidden="true" class="fas fa-video"></i></a></p>
-                        <% else %>
-                            <p><a class="btn btn-primary" href="$OnlineLocationUrl" rel="noopener" target="_blank">Online event link <i aria-hidden="true" class="fas fa-external-link-alt"></i></a></p>
+                <p>
+                    <% if $OnlineLocationUrl || $MoreInfoLink %>
+
+                        <% if $OnlineLocationUrl %>
+                            <% if $OnlineLocationType == "Zoom" %>
+                                    <a class="btn btn-primary btn-zoom mb-1" href="$OnlineLocationUrl" rel="noopener" target="_blank">Zoom link <i aria-hidden="true" class="fas fa-video"></i></a>
+                            <% else %>
+                                    <a class="btn btn-primary mb-1" href="$OnlineLocationUrl" rel="noopener" target="_blank">Virtual event link <i aria-hidden="true" class="fas fa-laptop-house"></i></a>
+                            <% end_if %>
+                        <% end_if %>
+                        <% if $MoreInfoLink %>
+                            <a href="$MoreInfoLink" class="btn btn-outline-primary mb-1" target="_blank">Event website <i aria-hidden="true" class="fas fa-external-link-alt"></i></a>
                         <% end_if %>
                     <% end_if %>
+
+                </p>
 				<div class="content">$Content</div>
                 <% if $MoreInfoLink %>
                     <p><a href="$MoreInfoLink" class="btn btn-primary mb-2" target="_blank">Event website <i aria-hidden="true" class="fas fa-external-link-alt"></i></a></p>

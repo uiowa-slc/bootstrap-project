@@ -9,8 +9,6 @@
 		       $Content
 
 	            <% if $EventList %>
-	            <hr />
-	             <h2>Up next:</h2>
 	                <% loop $EventList %>
 	                    <% include EventCard %>
 	                <% end_loop %>
