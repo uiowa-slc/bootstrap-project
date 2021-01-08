@@ -13,6 +13,7 @@
                 <% loop $Menu(1) %>
                     <li class="nav-item mr-lg-5 $LinkingMode nav-item<% if $isCurrent || $isSection %> active<% end_if %>"><a class="nav-link text-uppercase" href="$Link" title="$Title.XML">$MenuTitle.XML</a></li>
                 <% end_loop %>
+
           </ul>
         </div>
     </nav>
