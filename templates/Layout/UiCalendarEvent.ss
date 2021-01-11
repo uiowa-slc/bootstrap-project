@@ -138,7 +138,7 @@
 			$Form
 			$PageComments
 		</div>
-        <% if $Image %>
+        <% if $Image.URL %>
 		<% if $Image.Orientation != "Wide" || $Venue.Title || $Location %>
 		<div class="col-lg-4">
 			<div class="sticky-side">
