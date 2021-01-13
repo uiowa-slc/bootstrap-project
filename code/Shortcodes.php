@@ -25,6 +25,11 @@ class Shortcodes {
 				$parsedContent = $parser->parse($page->Content);
 				$content = $parsedContent;
 			}
+		} else {
+
+			$parser = ShortcodeParser::get();
+			$parsedContent = $parser->parse($content);
+			$content = $parsedContent;
 		}
 
 		if (isset($arguments['title'])) {
