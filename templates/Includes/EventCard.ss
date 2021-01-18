@@ -1,7 +1,7 @@
 <div class="card mb-4">
     <% if $Image.URL %>
             <a href="$Link">
-                <img src="$Image.URL" class="card-img" alt="$Title" loading="lazy">
+                <img class="card-img lazyload" data-src="$Image.ThumbURL" data-aspectratio="$Image.Ratio"  />
             </a>
     <% end_if %>
     <div class="row no-gutters">
