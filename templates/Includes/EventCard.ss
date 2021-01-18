@@ -18,15 +18,7 @@
 
                         <% if $Dates %>
                             <% loop $Dates.Limit(1) %>
-                                <% with $StartDateTime %>
-                                    <time itemprop="startDate" datetime="$Rfc3339">$Format("EEEE, MMM d, h:mm a")</time>
-                                <% end_with %>
-                                <% if $EndDate %>
-                                 -
-                                <% with $EndDate %>
-                                    <time itemprop="endDate" datetime="$Rfc3339">$Format("EEEE, MMM d, h:mm a")</time>
-                                <% end_with %>
-                                <% end_if %>
+                                <% include DateTimesList %>
                             <% end_loop %>
                         <% end_if %>
                             <% if $Dates.Count > "1" %>
