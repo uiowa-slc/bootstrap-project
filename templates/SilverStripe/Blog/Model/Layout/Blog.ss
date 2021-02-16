@@ -12,7 +12,7 @@
             <% end_if %>
 
             <% if $PaginatedList.Exists %>
-                <% loop $PaginatedList.limit(10) %>
+                <% loop $PaginatedList %>
                     <% include SilverStripe\\Blog\\PostSummary %>
                 <% end_loop %>
             <% else %>
