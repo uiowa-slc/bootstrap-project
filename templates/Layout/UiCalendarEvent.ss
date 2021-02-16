@@ -29,7 +29,7 @@
                         </p>
                     <p>
                    <% if $isOnline %>
-                    <strong>Location:</strong> Online <i aria-hidden="true" class="fas fa-laptop-house"></i><br />
+                    <strong>Location:</strong> Virtual Event <i aria-hidden="true" class="fas fa-laptop-house"></i><br />
 
                     <% else %>
 
