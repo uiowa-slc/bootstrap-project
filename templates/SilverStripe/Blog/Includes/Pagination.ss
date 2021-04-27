@@ -1,6 +1,6 @@
 <%-- NOTE: Before including this, you will need to wrap the include in a with block  --%>
 <% if $MoreThanOnePage %>
-	<ul class="pagination">
+	<ul class="pagination justify-content-center">
 		<% if $NotFirstPage %>
 			<li class="page-item">
 				<a class="page-link previous" aria-label="Previous" href="{$PrevLink}">
