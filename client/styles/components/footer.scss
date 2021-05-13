@@ -4,6 +4,13 @@
 .footer {
     font-size: $font-size-sm;
 
+    &__summary{
+        a{
+            color: white;
+            text-decoration: underline;
+        }
+    }
+
     &__bar-link {
 
         &:after {
