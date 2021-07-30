@@ -7,7 +7,7 @@
     "require":
     {
         "php": ">=5.5",
-        "silverstripe/recipe-cms": "4.7.*@stable",
+        "silverstripe/recipe-cms": "4.8.*@stable",
         "md/ac-json-events": "3.*",
         "jonom/focuspoint": "*",
         "md/saml": "dev-md",
