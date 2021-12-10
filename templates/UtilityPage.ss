@@ -19,7 +19,7 @@
     <body class="{$ClassName}">
 
     <div class="d-flex justify-content-center align-items-center vh-100">
-        <div>
+        <div class="m-3">
             $Content
         </div>
     </div>
