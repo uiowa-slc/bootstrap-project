@@ -18,7 +18,7 @@
     </head>
     <body class="{$ClassName}">
 
-    <div class="d-flex justify-content-md-center align-items-center vh-100">
+    <div class="d-flex justify-content-center align-items-center vh-100">
         <div>
             $Content
         </div>
