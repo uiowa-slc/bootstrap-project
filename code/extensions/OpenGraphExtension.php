@@ -92,6 +92,7 @@ class OpenGraphExtension extends DataExtension {
 			'Photo',
 			'BackgroundImage',
 			'Picture',
+            'Image'
 		);
 
 		if ($this->owner->ClassName == 'UiCalendarEvent') {
