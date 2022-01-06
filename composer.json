@@ -15,7 +15,7 @@
         "md/uiowa-bar": "2.*",
         "gorriecoe/silverstripe-webfonts": "*",
         "jonom/silverstripe-betternavigator": "*",
-        "silverstripe/blog": "^3.3",
+        "silverstripe/blog": "*",
         "md/silverstripe-maintenance-mode": "dev-master",
         "undefinedoffset/sortablegridfield": "^2.0",
         "silverstripe/sharedraftcontent": "*",
