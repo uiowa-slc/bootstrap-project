@@ -19,7 +19,8 @@
         "md/silverstripe-maintenance-mode": "dev-master",
         "undefinedoffset/sortablegridfield": "^2.0",
         "silverstripe/sharedraftcontent": "*",
-        "quamsta/silverstripe-api-cacher": "1.*"
+        "quamsta/silverstripe-api-cacher": "1.*",
+        "silverstripe/googlesitemaps": "*"
 
     },
     "repositories": [
