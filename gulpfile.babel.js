@@ -17,6 +17,7 @@ import pkg from './package.json';
 const $ = gulpLoadPlugins();
 const { PATHS } = loadConfig();
 const themeDir = '../../../themes/' + PATHS.theme;
+const sass = require('gulp-sass')(require('node-sass'));
 
 function loadConfig() {
     let ymlFile = fs.readFileSync('../../../gulp.yml', 'utf8');
@@ -84,14 +85,14 @@ function styles() {
     return gulp.src(themeDir + '/src/styles/*.scss')
         .pipe($.newer('.tmp/styles'))
         .pipe($.sourcemaps.init())
-        .pipe($.sass({
+        .pipe(sass({
             precision: 10,
             includePaths: [
                 './client/styles/',
                 '../uiowa-bar/scss',
                 './node_modules/'
             ]
-        }).on('error', $.sass.logError))
+        }).on('error', sass.logError))
         .pipe(gulp.dest('.tmp/styles'))
         // Concatenate and minify styles
         .pipe($.if('*.css', $.postcss(plugins)))
